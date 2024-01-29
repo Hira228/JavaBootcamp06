@@ -22,6 +22,3 @@ insert into mama.Store(name, price) values (
 'lala',
 43421
 );
-
-
-select * from mama.Store;

@@ -8,17 +8,15 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-import java.nio.channels.AsynchronousServerSocketChannel;
+
+import javax.sql.DataSource;
 import java.sql.SQLException;
 
 public class EmbeddedDataSourceTest {
-    JDBCDataSource dataSource = new JDBCDataSource();
+    DataSource dataSource = null;
     @BeforeEach
     public void init() {
-        dataSource.setDatabase("jdbc:hsqldb:mem:testdb");
-        dataSource.setUser("sa");
-        dataSource.setPassword("");
-        EmbeddedDatabase embeddedDatabaseBuilder = new EmbeddedDatabaseBuilder()
+        dataSource =  new EmbeddedDatabaseBuilder()
                 .generateUniqueName(true)
                 .setType(EmbeddedDatabaseType.HSQL)
                 .setScriptEncoding("UTF-8")
@@ -26,6 +24,7 @@ public class EmbeddedDataSourceTest {
                 .addScript("schema.sql")
                 .addScript("data.sql")
                 .build();
+
     }
 
     @Test
