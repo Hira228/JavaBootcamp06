@@ -1,2 +1,2 @@
 # JavaBootcamp06
-JUnit and Mockito. Project about the basics of module and integration.
+JUnit and Mockito. This project about the basics of module and integration.
